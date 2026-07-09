@@ -1,5 +1,5 @@
 data/
-__pycache__/
+**/__pycache__
 req_data/
 .gnn_env
 .DS_store
