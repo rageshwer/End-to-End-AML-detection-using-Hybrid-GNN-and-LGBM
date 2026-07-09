@@ -16,10 +16,10 @@ from evidently.presets import ClassificationPreset
 session={}
 @asynccontextmanager
 async def lifespan(app : FastAPI):
-    session['model']=lightgbm.Booster(model_file='/Users/rageshwer/Goal ML/Projects/AML - GNN/req_data/model.txt')
-    session['lookup']=pd.read_parquet('/Users/rageshwer/Goal ML/Projects/AML - GNN/req_data/lookup.parquet')
-    session['vectors']=pd.read_parquet('/Users/rageshwer/Goal ML/Projects/AML - GNN/req_data/test_vectors.parquet')
-    session['truth']=pd.read_parquet('/Users/rageshwer/Goal ML/Projects/AML - GNN/req_data/test_truth.parquet')
+    session['model']=lightgbm.Booster(model_file='/api_img/req_data/model.txt')
+    session['lookup']=pd.read_parquet('/api_img/req_data/lookup.parquet')
+    session['vectors']=pd.read_parquet('/api_img/req_data/test_vectors.parquet')
+    session['truth']=pd.read_parquet('/api_img/req_data/test_truth.parquet')
     yield
     session.clear()
 
