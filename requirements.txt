@@ -1,0 +1,14 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+torch
+torch-geometric
+streamlit
+lightgbm
+shap
+fastapi
+pydantic
+requests
+evidently
