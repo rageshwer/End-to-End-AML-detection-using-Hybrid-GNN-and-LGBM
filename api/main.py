@@ -1,11 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,HTTPException
 from fastapi.responses import JSONResponse,HTMLResponse
 from tempfile import NamedTemporaryFile
 import pandas as pd
 import numpy as np
 import lightgbm
 from contextlib import asynccontextmanager
-from pydantic import BaseModel,field_validator
+from pydantic import BaseModel,field_validator,ValidationError
 from evidently import Dataset,DataDefinition
 from evidently import Report,BinaryClassification
 from evidently.presets import ClassificationPreset
@@ -46,7 +46,14 @@ its corresponding SHAP values to send back to the frontend.'''
 @app.post('/predict')
 def predict(id:int)->JSONResponse:
     # Validation
-    val_idx_obj=validate_idx(test_id=id)
+    try:
+        val_idx_obj=validate_idx(test_id=id)
+    except ValidationError as e:
+        raise HTTPException(
+            status_code=422,
+            detail=e.errors()[0]['msg']
+        )
+    
     test=val_idx_obj.test_id
     raw_row=session['vectors'].iloc[[test]]
     
