@@ -14,7 +14,7 @@ The project demonstrates the complete lifecycle of a production-ready Graph Mach
 
 **Interactive Demo**
 
-https://tinyurl.com/aml-gnn
+http://13.232.88.197:8501/
 
 > **Note**
 >
